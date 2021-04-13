@@ -16,65 +16,70 @@
     </div>
     <!-- wrapped the entire thing -->
     <div class="container"> 
-        <!-- col-4 -->
+    <!-- col-4 -->
     <div class="input-group col-4">
         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-          aria-describedby="search-addon"/>
+          aria-describedby="search-addon" id="user-input"/>
         <button type="button" class="btn btn-outline-primary" id="fetch-button">Search</button>
     </div>
     <div class="card" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Austin</li>
-          <li class="list-group-item">Chicago</li>
-          <li class="list-group-item">New York</li>
-          <li class="list-group-item">Orlando</li>
-          <li class="list-group-item">San Francisco</li>
-          <li class="list-group-item">Seattle</li>
-          <li class="list-group-item">Denver</li>
-          <li class="list-group-item">Atlanta</li>
-        </ul>
+        <div class="list-group list-group-flush">
+        </div>
       </div>
+      <!-- col-8  -->
       <div class="container col-8" id="weather-card">
-        <!-- Content here -->
-        <h1>Weather</h1>
+          <h1 id="city"></h1>
+          <h1 id="date"></h1>
+          <img id="icon">
+          <h3 id="wc-temp"></h3>
+          <h3 id="wc-hum"></h3>
+          <h3 id="wc-ws"></h3>
+          <h3 id="wc-uv"></h3>
       </div>
       <h2>5-Day Forecast:</h2>
       <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-body">
           <h5 class="card-title" id="day1Date"></h5>
-          <p class="card-text" id="day1Temp">Temp: </p>
-          <p class="card-text" id="day1Humidity">Humidity: </p>
+          <img id="day1Icon">
+          <p class="card-text" id="day1Temp"></p>
+          <p class="card-text" id="day1Humidity"></p>
         </div>
       </div>
       <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-body">
           <h5 class="card-title" id="day2Date"></h5>
-          <p class="card-text"  id="day2Temp">Temp: </p>
-          <p class="card-text" id="day2Humidity">Humidity: </p>
+          <img id="day2Icon">
+          <p class="card-text"  id="day2Temp"></p>
+          <p class="card-text" id="day2Humidity"></p>
         </div>
       </div>
       <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-body">
           <h5 class="card-title" id="day3Date"></h5>
-          <p class="card-text"  id="day3Temp">Temp: </p>
-          <p class="card-text" id="day3Humidity">Humidity: </p>
+          <img id="day3Icon">
+          <p class="card-text"  id="day3Temp"></p>
+          <p class="card-text" id="day3Humidity"></p>
         </div>
       </div>
       <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-body">
           <h5 class="card-title" id="day4Date"></h5>
-          <p class="card-text"  id="day4Temp">Temp: </p>
-          <p class="card-text" id="day4Humidity">Humidity: </p>
+          <img id="day4Icon">
+          <p class="card-text"  id="day4Temp"></p>
+          <p class="card-text" id="day4Humidity"></p>
         </div>
       </div>
       <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-body">
           <h5 class="card-title" id="day5Date"></h5>
-          <p class="card-text" id="day5Temp">Temp: </p>
-          <p class="card-text" id="day5Humidity">Humidity: </p>
+          <img id="day5Icon">
+          <p class="card-text" id="day5Temp"></p>
+          <p class="card-text" id="day5Humidity"></p>
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
       <script src="script.js"></script>
 </body>
 </html>
