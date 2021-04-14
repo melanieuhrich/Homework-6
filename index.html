@@ -9,77 +9,91 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Weather Dashboard</h1>
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Weather Dashboard</h1>
+            </div>
         </div>
-    </div>
-    <!-- wrapped the entire thing -->
-    <div class="container"> 
-    <!-- col-4 -->
-    <div class="input-group col-4">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-          aria-describedby="search-addon" id="user-input"/>
-        <button type="button" class="btn btn-outline-primary" id="fetch-button">Search</button>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="list-group list-group-flush">
+        <!-- hold the two green divs -->
+        <div class="row"> 
+            <div class="green col-4">
+                <div class="input-group">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" id="user-input"/>
+                <button type="button" class="btn btn-outline-primary" id="fetch-button">Search</button>
+                </div>
+                <div id="button-container" class="row">
+                </div>
+            </div>
+            <div class="green col-8">
+                <div class="card text-dark bg-light mb-3" id="weather-card">
+                    <div class="card-body"> 
+                      <h3 class="card-title" id="city"></h3>
+                      <img id="icon">
+                      <p class="card-text" id="wc-temp"></p>
+                      <p class="card-text" id="wc-hum"></p>
+                      <p class="card-text" id="wc-ws"></p>
+                      <p class="card-text" id="wc-uv"></p>
+                    </div>
+                  </div>
+                <div class="row">
+                    <h3>5-Day Forecast:</h3>
+                    <div class="purple">
+                            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title" id="day1Date"></h5>
+                                <img id="day1Icon">
+                                <p class="card-text" id="day1Temp"></p>
+                                <p class="card-text" id="day1Humidity"></p>
+                            </div>
+                            </div>
+                    </div>
+                    <div class="purple">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="day2Date"></h5>
+                            <img id="day2Icon">
+                            <p class="card-text"  id="day2Temp"></p>
+                            <p class="card-text" id="day2Humidity"></p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="purple">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="day3Date"></h5>
+                            <img id="day3Icon">
+                            <p class="card-text"  id="day3Temp"></p>
+                            <p class="card-text" id="day3Humidity"></p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="purple">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="day4Date"></h5>
+                            <img id="day4Icon">
+                            <p class="card-text"  id="day4Temp"></p>
+                            <p class="card-text" id="day4Humidity"></p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="purple">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="day5Date"></h5>
+                            <img id="day5Icon">
+                            <p class="card-text" id="day5Temp"></p>
+                            <p class="card-text" id="day5Humidity"></p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <!-- col-8  -->
-      <div class="container col-8" id="weather-card">
-          <h1 id="city"></h1>
-          <h1 id="date"></h1>
-          <img id="icon">
-          <h3 id="wc-temp"></h3>
-          <h3 id="wc-hum"></h3>
-          <h3 id="wc-ws"></h3>
-          <h3 id="wc-uv"></h3>
-      </div>
-      <h2>5-Day Forecast:</h2>
-      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title" id="day1Date"></h5>
-          <img id="day1Icon">
-          <p class="card-text" id="day1Temp"></p>
-          <p class="card-text" id="day1Humidity"></p>
-        </div>
-      </div>
-      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title" id="day2Date"></h5>
-          <img id="day2Icon">
-          <p class="card-text"  id="day2Temp"></p>
-          <p class="card-text" id="day2Humidity"></p>
-        </div>
-      </div>
-      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title" id="day3Date"></h5>
-          <img id="day3Icon">
-          <p class="card-text"  id="day3Temp"></p>
-          <p class="card-text" id="day3Humidity"></p>
-        </div>
-      </div>
-      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title" id="day4Date"></h5>
-          <img id="day4Icon">
-          <p class="card-text"  id="day4Temp"></p>
-          <p class="card-text" id="day4Humidity"></p>
-        </div>
-      </div>
-      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title" id="day5Date"></h5>
-          <img id="day5Icon">
-          <p class="card-text" id="day5Temp"></p>
-          <p class="card-text" id="day5Humidity"></p>
-        </div>
-      </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
       <script src="script.js"></script>
 </body>
-</html>
