@@ -1,40 +1,26 @@
 var cardBody = document.getElementById('weather-card');
 var fetchButton = document.getElementById('fetch-button');
-
 var recentSearches;
 
 if (JSON.parse(localStorage.getItem('input'))){
     recentSearches = JSON.parse(localStorage.getItem('input'));
-}else {
+} else {
     recentSearches = [];
 }
-console.log(recentSearches);
 
 function getApi(searchCity) {
     var city = searchCity;
-    //var city = document.getElementById('user-input').value;   //always pulls city from the input field
     var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=deb6154f7e5b351570818656e9a0ad91&units=imperial`; 
-    
-
     fetch(requestUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       document.getElementById('city').innerHTML = data.name + ' (' + moment().format('L') + ')'; 
-    //   document.getElementById('date').innerHTML = moment().calendar();
       document.getElementById('icon').setAttribute('src', 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png')
       document.getElementById('wc-temp').textContent = 'Temperature: ' + data.main.temp + ' °F';
       document.getElementById('wc-hum').textContent = 'Humidity: ' + data.main.humidity + '%'; 
       document.getElementById('wc-ws').textContent = 'Wind Speed: ' + data.wind.speed + ' MPH'; 
-    //   document.getElementById('date').innerHTML = moment().calendar();
-      //Loop over the data to generate a table, each table row will have a link to the repo url
-    //   for (var i = 0; i < data.length; i++) { //make buttons
-    //     var input = document.getElementById('input-group');
-    //         document.createElement('<button>');
-    //         input.appendChild('button');
-    //   }
     var lat = data.coord.lat;
     var lon = data.coord.lon; 
     var oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=deb6154f7e5b351570818656e9a0ad91`; 
@@ -43,9 +29,7 @@ function getApi(searchCity) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
         document.getElementById('wc-uv').textContent = 'UV Index: ' + data.current.uvi;
-        // document.getElementById('UVnum').innerHTML = data.current.uvi;
         addColor(); 
         function addColor() {
             if (data.current.uvi <= 2) {
@@ -56,11 +40,7 @@ function getApi(searchCity) {
                 $('#wc-uv').addClass('moderate')
             }
         } 
-    
     });
-
-    
-
     });
     var dayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=deb6154f7e5b351570818656e9a0ad91&units=imperial`; 
     fetch(dayURL)
@@ -68,7 +48,6 @@ function getApi(searchCity) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
         var oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.city.coord.lat}&lon=${data.city.coord.lon}&appid=deb6154f7e5b351570818656e9a0ad91`; 
         fetch(oneCallURL) 
         .then(function (response) {
@@ -97,28 +76,17 @@ function getApi(searchCity) {
         document.getElementById('day5Humidity').textContent = 'Humidity: ' + data.list[38].main.humidity + '%';
       })
       });
-
-
 }
 
 var savedContent = $('#user-input').val();
 
 function renderLocalStorage(){
-    // var searchCity = $('#user-input').val();
-    // var stuffSaved = JSON.parse(localStorage.getItem('input')); 
-    // console.log('here is stuff saved', stuffSaved);
-    //recentSearches is good for us to use here
-    // if (stuffSaved){
         for (var i=0; i<recentSearches.length; i++){
             $('#button-container').append(`<button type="button" data-name=${recentSearches[i]} class="btn btn-light btn-text">${recentSearches[i]}</button>`);
-
             };
-    // }
-    // savedContent = stuffSaved;  //not ever a good idea to do this.
 }
 
 $('#button-container').on('click', function(e){
-    console.log(e.target.getAttribute('data-name'));
     getApi(e.target.getAttribute('data-name'))
 })
 
@@ -127,11 +95,8 @@ $('#fetch-button').on('click', function(){
     recentSearches.push(savedContent);
     //I open up your app now and search for chicago, london, and new york 
     localStorage.setItem('input', JSON.stringify(recentSearches));
-    console.log(savedContent);
     $('#button-container').append(`<button type="button" class="btn btn-light">${savedContent}</button>`);
-    // $('#button-container').();
 });
-
 
 fetchButton.addEventListener('click', function(){
     var city = document.getElementById('user-input').value;
