@@ -1,90 +1,57 @@
-# 06 Server-Side APIs: Weather Dashboard
+# Homework 6 
 
-## Your Task
+# Purpose of the Assignment 
 
-Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+Create a weather app that shows present and future conditions by pulling them from the API and saves previously searched cities in local storage. 
 
-Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that provides basic setup and usage instructions. You will use `localStorage` to store any persistent data.
+# What I Did and Why
 
-## User Story
+Line 1: Create the cardBody variable and link it with the weather-card ID in the HTML. 
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
+Line 2: Create the fetchButton variable and link it with the fetch-button ID in the HTML.
 
-## Acceptance Criteria
+Line 3: Create the recentSearches variable.
 
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-```
+Lines 5-9: Parse what corresponds to the 'input' key and get it from localStorage, then define recentSearches as its contents. If there is nothing in localStorage, define recentSearches as an empty array. 
 
-## Mock-Up
+Line 11: Declare the getApi function and give it the searchCity variable. 
 
-The following image shows the web application's appearance and functionality:
+Line 12: Create the city variable and define it as searchCity. 
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
+Line 13: Create the requestUrl variable and define it as the link which corresponds with the API.
 
-## Grading Requirements
+Line 14: Call the fetch function and tell it to reference requestUrl.
 
-This homework is graded based on the following criteria: 
+Lines 15-17: Return the response. 
 
-### Technical Acceptance Criteria: 40%
+Line 18: Reference the data.
 
-* Satisfies all of the above acceptance criteria plus the following:
+Line 19: Grab the city ID and modify the HTML to make its tag read the city name and current date. 
 
-    * Uses the OpenWeather API to retrieve weather data.
+Line 20: Grab the icon ID and give its tag a source, then pull a certain property from that source to generate the icon. 
 
-    * Uses `localStorage` to store persistent data.
+Line 21: Grab the wc-temp ID, give its tag a text content, and pull the temperature from the dataset.
 
-### Deployment: 32%
+Line 22: Grab the wc-hum ID, give its tag a text content, and pull the humidity from the dataset.
 
-* Application deployed at live URL.
+Line 23: Grab the wc-ws ID, give its tag a text content, and pull the wind speed from the dataset.
 
-* Application loads with no errors.
+Line 24: Create the lat variable and define it as the latitude coordinate from the dataset. 
 
-* Application GitHub URL submitted.
+Line 25: Create the lon variable and define it as the longitude coordinate from the dataset. 
 
-* GitHub repository that contains application code.
+Line 26: Create the oneCallUrl variable and and define it as the link which corresponds with the API.
 
-### Application Quality: 15%
+Line 27: Call the fetch function and tell it to reference oneCallUrl.
 
-* Application user experience is intuitive and easy to navigate.
+Lines 28-30: Return the response. 
 
-* Application user interface style is clean and polished.
+Line 31: Reference the data.
 
-* Application resembles the mock-up functionality provided in the homework instructions.
+Line 32: Grab the wc-uv ID, give its tag a text content, and pull the uvi from the dataset. 
 
-### Repository Quality: 13%
+Line 33: Call the addColor function. 
 
-* Repository has a unique name.
 
-* Repository follows best practices for file structure and naming conventions.
 
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a readme describing the project.
-
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.

@@ -23,8 +23,8 @@ function getApi(searchCity) {
       document.getElementById('wc-ws').textContent = 'Wind Speed: ' + data.wind.speed + ' MPH'; 
     var lat = data.coord.lat;
     var lon = data.coord.lon; 
-    var oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=deb6154f7e5b351570818656e9a0ad91`; 
-    fetch(oneCallURL) 
+    var oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=deb6154f7e5b351570818656e9a0ad91`; 
+    fetch(oneCallUrl) 
     .then(function (response) {
         return response.json();
       })
@@ -32,24 +32,28 @@ function getApi(searchCity) {
         document.getElementById('wc-uv').textContent = 'UV Index: ' + data.current.uvi;
         addColor(); 
         function addColor() {
-            if (data.current.uvi <= 2) {
-                $('#wc-uv').addClass('favorable');
-            } else if (data.current.uvi >= 8) {
+            if (data.current.uvi >= 8) {
                 $('#wc-uv').addClass('severe');
+            } else if (data.current.uvi <= 2) {
+                    $('#wc-uv').addClass('favorable');
+                    $('#wc-uv').removeClass('severe');
+                    $('#wc-uv').removeClass('moderate')
             } else {
-                $('#wc-uv').addClass('moderate')
+                $('#wc-uv').addClass('moderate');
+                $('#wc-uv').removeClass('severe');
+                $('#wc-uv').removeClass('favorable');
             }
         } 
     });
     });
-    var dayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=deb6154f7e5b351570818656e9a0ad91&units=imperial`; 
-    fetch(dayURL)
+    var dayUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=deb6154f7e5b351570818656e9a0ad91&units=imperial`; 
+    fetch(dayUrl)
     .then(function (response) {
         return response.json();
       })
       .then(function (data) {
-        var oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.city.coord.lat}&lon=${data.city.coord.lon}&appid=deb6154f7e5b351570818656e9a0ad91`; 
-        fetch(oneCallURL) 
+        var oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.city.coord.lat}&lon=${data.city.coord.lon}&appid=deb6154f7e5b351570818656e9a0ad91`; 
+        fetch(oneCallUrl) 
         .then(function (response) {
         return response.json();
       })

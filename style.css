@@ -12,8 +12,7 @@ h1 {
 
 .favorable {
     background-color: green;
-    width: 13%;
-    
+    width: 13%;  
 }
 
 .moderate {
@@ -23,7 +22,7 @@ h1 {
 
 .severe {
     background-color: red;
-    width: 13%;
+    width: 14%;
 }
 
 .purple {
