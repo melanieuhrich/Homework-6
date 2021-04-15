@@ -97,7 +97,6 @@ $('#button-container').on('click', function(e){
 $('#fetch-button').on('click', function(){
     var savedContent = $('#user-input').val();
     recentSearches.push(savedContent);
-    //I open up your app now and search for chicago, london, and new york 
     localStorage.setItem('input', JSON.stringify(recentSearches));
     $('#button-container').append(`<button type="button" class="btn btn-light">${savedContent}</button>`);
 });
