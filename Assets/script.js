@@ -91,7 +91,7 @@ function renderLocalStorage(){
 }
 
 $('#button-container').on('click', function(e){
-    getApi(e.target.getAttribute('data-name'))
+    getApi(e.target.textContent)
 })
 
 $('#fetch-button').on('click', function(){
